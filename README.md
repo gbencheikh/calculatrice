@@ -44,33 +44,28 @@ Installer Google Test (si ce n'est pas déjà fait) : Vous pouvez suivre les ins
 ### Exécution des tests
 Les tests unitaires sont écrits avec Google Test et peuvent être exécutés comme suit :
 
+```
 g++ calculatrice.cpp main.cpp -o calculatrice.exe -lgtest -lgtest_main -pthread
 ./calculatrice.exe
+```
 
 Les tests vérifieront le bon fonctionnement des opérations de la calculatrice.
 
-# Utilisation
-Dans le fichier main.cpp, vous pouvez voir un exemple d'utilisation de la calculatrice. Voici comment l'utiliser pour effectuer des opérations simples :
+# Tests Unitaires
+Les tests unitaires sont des petites parties de code qui permettent de vérifier que les différentes fonctions de notre programme fonctionnent correctement. Chaque test se concentre sur une fonction spécifique et vérifie que celle-ci donne les résultats attendus pour des données d'entrée précises. Par exemple, si nous avons une fonction d'addition, un test unitaire vérifiera que cette fonction retourne bien la somme des nombres que nous lui passons en paramètres.
+
+## Exemple d'un test unitaire pour une fonction d'adition
+Supposons que nous avons une classe Calculatrice avec une fonction addition qui additionne deux nombres. Voici comment on pourrait écrire un test unitaire pour vérifier cette fonction :
 
 ```
-#include <iostream>
-#include "calculatrice.h"
-
-int main() {
-    double result;
-
-    result = Calculatrice::addition(0.5, 0.1);
-    std::cout << "Le résultat de l'addition est : " << result << std::endl;
-
-    result = Calculatrice::soustraction(2.0, 1.0);
-    std::cout << "Le résultat de la soustraction est : " << result << std::endl;
-
-    result = Calculatrice::multiplication(2.0, 3.0);
-    std::cout << "Le résultat de la multiplication est : " << result << std::endl;
-
-    result = Calculatrice::division(6.0, 2.0);
-    std::cout << "Le résultat de la division est : " << result << std::endl;
-
-    return 0;
+// Rappel : on utilise Google Test pour les tests
+TEST(CalculatriceTests, TestAddition) {
+    EXPECT_DOUBLE_EQ(Calculatrice::addition(2.0, 3.0), 5.0); // Vérifie que 2 + 3 = 5
 }
 ```
+Dans cet exemple :
+
+- **TEST** est la commande qui crée un test unitaire.
+- **CalculatriceTests** est le nom de notre groupe de tests (pour organiser plusieurs tests similaires).
+- **TestAddition** est le nom de ce test spécifique.
+- **EXPECT_DOUBLE_EQ** est utilisée dans les tests unitaires pour comparer deux valeurs en vérifiant leur égalité avec une certaine précision. Dans cet exemple, elle vérifie que le résultat de Calculatrice::addition(2.0, 3.0) est égal au résultat attendu 5.0.
