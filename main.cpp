@@ -5,14 +5,14 @@
 using namespace std; 
 
 // Test de la méthode addition
-TEST(main, Addition) {
+TEST(CalculatriceTest, Addition) {
     EXPECT_DOUBLE_EQ(Calculatrice::addition(0.5, 0.1), 0.6);
     EXPECT_DOUBLE_EQ(Calculatrice::addition(-1.0, 1.0), 0.0);
     EXPECT_DOUBLE_EQ(Calculatrice::addition(2.0, 2.0), 4.0);
 }
 
 // Test de la méthode soustraction
-TEST(main, Soustraction) {
+TEST(CalculatriceTest, Soustraction) {
     EXPECT_DOUBLE_EQ(Calculatrice::soustraction(0.5, 0.1), 0.4);
     EXPECT_DOUBLE_EQ(Calculatrice::soustraction(-1.0, 1.0), -2.0);
     EXPECT_DOUBLE_EQ(Calculatrice::soustraction(2.0, 2.0), 0.0);
